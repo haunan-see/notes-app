@@ -9,11 +9,12 @@ const Footer = ({
   onPress: () => void
   buttonTitle: string
 }) => {
-  const deviceWidth = Dimensions.get("window").width + 1
+  const deviceWidth = Dimensions.get("window").width
 
   return (
     <View
-      className={`absolute bottom-0 w-[${deviceWidth}px] h-[120px] items-center justify-center bg-secondary`}
+      className="absolute bottom-0 h-[120px] items-center justify-center bg-secondary"
+      style={{ width: deviceWidth }}
     >
       <Button
         label={buttonTitle}

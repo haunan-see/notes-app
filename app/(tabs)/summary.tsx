@@ -1,26 +1,14 @@
-import { Image, ScrollView, Text, View } from "react-native"
 import React from "react"
+import { Image, RefreshControl, ScrollView, Text, View } from "react-native"
+import Button from "@/components/Button"
 import Container from "@/components/Container"
+import { useNotes } from "@/hooks/useNotes"
 import images from "@/constants/images"
 import { getCategoryIcon } from "./home"
-import Button from "@/components/Button"
-
-const categories = [
-  {
-    title: "Work and study",
-    count: 50,
-  },
-  {
-    title: "Life",
-    count: 12,
-  },
-  {
-    title: "Health and wellness",
-    count: 30,
-  },
-]
 
 const Summary = () => {
+  const { categories, getNoteCategoryCount, refetch, loading } = useNotes()
+
   return (
     <Container>
       <View className="justify-between flex-row">
@@ -28,18 +16,23 @@ const Summary = () => {
         <Image source={images.robot} />
       </View>
 
-      <ScrollView>
-        {categories.map(({ title, count }) => (
-          <View key={title} className="py-3">
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refetch} />
+        }
+      >
+        {categories.map(({ value }) => (
+          <View key={value} className="py-3">
             <View className="justify-between items-center flex-row my-3">
               <View className="flex-row gap-3">
                 <Image
-                  source={getCategoryIcon(title)}
+                  source={getCategoryIcon(value)}
                   resizeMode="contain"
                   width={50}
                   height={50}
                 />
-                <Text className="font-pf text-base text-white">{title}</Text>
+                <Text className="font-pf text-base text-white">{value}</Text>
               </View>
               <Button
                 label="Detail"
@@ -50,7 +43,7 @@ const Summary = () => {
 
             <View className="bg-fade rounded-2xl border border-transparent-100 shadow-2xl my-1 p-4">
               <Text className="font-pf text-base text-transparent-700">
-                This topic has a total of {count} records.
+                This topic has a total of {getNoteCategoryCount(value)} records.
               </Text>
             </View>
           </View>

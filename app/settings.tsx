@@ -7,6 +7,7 @@ import RowItem from "@/components/RowItem"
 import Footer from "@/components/Footer"
 import Toast from "react-native-toast-message"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { deleteAllNotes } from "@/lib/appwrite"
 
 const settings = [
   "Online Customer",
@@ -32,8 +33,13 @@ const getSettingsIcon = (title: string) => {
 
 const Settings = () => {
   const insets = useSafeAreaInsets()
-  const handleDeleteAllNotes = () => {
-    // todo: add delete all notes logic
+  const handleDeleteAllNotes = async () => {
+    try {
+      await deleteAllNotes()
+    } catch (error) {
+      console.log("error", error)
+    }
+
     Toast.show({
       type: "success",
       text1: "All notes have been cleared",
