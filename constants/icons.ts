@@ -7,6 +7,10 @@ import study from "../assets/icons/study.png"
 import life from "../assets/icons/life.png"
 import health from "../assets/icons/health.png"
 import arrowRight from "../assets/icons/arrow-right.png"
+import customerService from "../assets/icons/customer-service.png"
+import privacyPolicy from "../assets/icons/privacy-policy.png"
+import userAgreement from "../assets/icons/user-agreement.png"
+import about from "../assets/icons/about.png"
 
 export default {
   home,
@@ -18,4 +22,8 @@ export default {
   life,
   health,
   arrowRight,
+  customerService,
+  privacyPolicy,
+  userAgreement,
+  about,
 }

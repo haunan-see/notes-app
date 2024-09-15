@@ -1,13 +1,31 @@
-import { View, Text, Image } from "react-native"
+import {
+  View,
+  Text,
+  Image,
+  ImageSourcePropType,
+  TouchableOpacity,
+} from "react-native"
 import React from "react"
 import icons from "@/constants/icons"
 
-const RowItem = ({ label, icon }: { label: string; icon?: string }) => {
+type RowItemProps = {
+  label: string
+  icon?: ImageSourcePropType
+  rowStyle?: string
+  textStyle?: string
+}
+
+const RowItem = ({ label, icon, rowStyle, textStyle }: RowItemProps) => {
   return (
-    <View className="bg-fade rounded-2xl border border-transparent-100 shadow-2xl my-1">
+    <TouchableOpacity
+      className={`bg-fade rounded-2xl border border-transparent-100 shadow-2xl ${rowStyle}`}
+      activeOpacity={0.7}
+    >
       <View className="flex flex-row justify-between items-center gap-3.5 p-4">
-        {icon && <Image source={icons.arrowRight} resizeMode="contain" />}
-        <Text className="flex-1 font-pf text-sm text-white">{label}</Text>
+        {icon && <Image source={icon} resizeMode="contain" />}
+        <Text className={`flex-1 font-pf text-transparent-900 ${textStyle}`}>
+          {label}
+        </Text>
         <Image
           source={icons.arrowRight}
           resizeMode="contain"
@@ -16,7 +34,7 @@ const RowItem = ({ label, icon }: { label: string; icon?: string }) => {
           className="px-4"
         />
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
