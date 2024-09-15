@@ -21,7 +21,7 @@ export const getCategoryIcon = (title: string) => {
 }
 
 const Home = () => {
-  const { data } = useNotes()
+  const { notes, loading, refetch } = useNotes()
 
   return (
     <Container>
@@ -52,7 +52,7 @@ const Home = () => {
 
       <SectionList
         className="h-full"
-        sections={data}
+        sections={notes}
         keyExtractor={(item, index) => item + index}
         renderItem={({ item }) => <RowItem label={item} rowStyle="my-1" />}
         renderSectionHeader={({ section: { title } }) => (
@@ -67,6 +67,9 @@ const Home = () => {
           </View>
         )}
         stickyHeaderHiddenOnScroll
+        showsVerticalScrollIndicator={false}
+        onRefresh={() => refetch()}
+        refreshing={loading}
       />
     </Container>
   )

@@ -1,5 +1,5 @@
 import { View, Text, Image, ImageSourcePropType } from "react-native"
-import { Tabs } from "expo-router"
+import { Tabs, useSegments } from "expo-router"
 import React from "react"
 import icons from "@/constants/icons"
 import { StatusBar } from "expo-status-bar"
@@ -67,9 +67,15 @@ const TabsLayout = () => {
         <Tabs.Screen
           name="create"
           options={{
+            title: "Create",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon icon={icons.create} color={color} focused={focused} />
+              <TabIcon
+                icon={icons.create}
+                color={color}
+                label="Create"
+                focused={focused}
+              />
             ),
           }}
         />
