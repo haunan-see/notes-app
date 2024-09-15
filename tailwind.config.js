@@ -4,11 +4,14 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
+        primary: "#F94695",
         fade: "rgba(255, 255, 255, 0.05)",
       },
       colors: {
         transparent: {
+          50: "rgba(255, 255, 255, 0.05)",
           100: "rgba(255, 255, 255, 0.12)",
+          700: "rgba(255, 255, 255, 0.7)",
         },
       },
       fontFamily: {

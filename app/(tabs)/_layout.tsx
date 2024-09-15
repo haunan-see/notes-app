@@ -2,6 +2,7 @@ import { View, Text, Image, ImageSourcePropType } from "react-native"
 import { Tabs } from "expo-router"
 import React from "react"
 import icons from "@/constants/icons"
+import { StatusBar } from "expo-status-bar"
 
 type TabIconProps = {
   icon: ImageSourcePropType
@@ -33,58 +34,63 @@ const TabIcon = ({ icon, color, label, focused }: TabIconProps) => {
 
 const TabsLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarActiveTintColor: "#F94695",
-        tabBarInactiveTintColor: "#CDCDE0",
-        tabBarStyle: {
-          paddingHorizontal: 20,
-          backgroundColor: "#161622",
-          height: 120,
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: "Home",
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon
-              icon={icons.home}
-              color={color}
-              label="Home"
-              focused={focused}
-            />
-          ),
+    <>
+      <Tabs
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: "#F94695",
+          tabBarInactiveTintColor: "#CDCDE0",
+          tabBarStyle: {
+            height: 120,
+            paddingHorizontal: 20,
+            backgroundColor: "#161622",
+            borderTopWidth: 1,
+            borderTopColor: "#232533",
+          },
         }}
-      />
-      <Tabs.Screen
-        name="create"
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon icon={icons.create} color={color} focused={focused} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="summary"
-        options={{
-          title: "Summary",
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon
-              icon={icons.summary}
-              color={color}
-              label="Summary"
-              focused={focused}
-            />
-          ),
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            title: "Home",
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={icons.home}
+                color={color}
+                label="Home"
+                focused={focused}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="create"
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon icon={icons.create} color={color} focused={focused} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="summary"
+          options={{
+            title: "Summary",
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={icons.summary}
+                color={color}
+                label="Summary"
+                focused={focused}
+              />
+            ),
+          }}
+        />
+      </Tabs>
+      <StatusBar style="light" />
+    </>
   )
 }
 
