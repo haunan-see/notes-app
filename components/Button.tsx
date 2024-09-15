@@ -16,7 +16,7 @@ const Button = ({
       activeOpacity={0.7}
       className={`bg-primary p-2 rounded-3xl ${containerStyle}`}
     >
-      <Text className={`font-pf text-white text-sm`}>{label}</Text>
+      <Text className="font-pf text-white text-sm">{label}</Text>
     </TouchableOpacity>
   )
 }
